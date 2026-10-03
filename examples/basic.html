@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>rendr-web: basic example</title>
+  <link rel="stylesheet" href="shared/demo.css" />
+</head>
+<body>
+  <main id="app"></main>
+
+  <script type="module">
+    import { mountPlayground } from "./shared/demo.js";
+    import easings from "../animation/easings.js";
+
+    // One element, one property, one curve: the smallest composition that says
+    // something true about the format. No assets, so the demuxer is never fetched.
+    const composition = {
+      rendr: "v2.1.0",
+      settings: { fps: 30, resolution: [1280, 720] },
+      variables: { accent: "#e6e6e6", ink: "#f2f2f2" },
+      timeline: [
+        {
+          id: "backdrop", type: "Text",
+          at: "00:00:00.000", duration: "00:00:03.000",
+          config: { content: "" },
+          style: { "&": {
+            position: "absolute", inset: "0", zIndex: 1, background: "#0d0d0d",
+            backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)",
+            backgroundSize: "128px 100%",
+          } },
+        },
+        {
+          id: "box", type: "Text",
+          at: "00:00:00.000", duration: "00:00:03.000",
+          config: { content: "" },
+          style: { "&": {
+            position: "absolute", top: "286px", width: "148px", height: "148px",
+            borderRadius: "6px", zIndex: 2, background: "@variables:accent",
+            left: { keyframes: [
+              { at: "0%", value: "96px", easing: "easeOutBack" },
+              { at: "100%", value: "1036px" },
+            ] },
+          } },
+        },
+        {
+          id: "label", type: "Text",
+          at: "00:00:00.000", duration: "00:00:03.000",
+          config: { content: "one element, one property, one curve" },
+          style: { "&": {
+            position: "absolute", top: "120px", left: "96px", zIndex: 2,
+            color: "@variables:ink", fontFamily: "ui-monospace, Menlo, Consolas, monospace",
+            fontSize: "34px", opacity: 0.8,
+          } },
+        },
+      ],
+    };
+
+    mountPlayground(document.getElementById("app"), {
+      page: "basic",
+      eyebrow: "rendr-web · example 1",
+      title: "One element, one curve",
+      lede: "A composition is a JSON file. Change a value on the left and <code>update()</code> reconciles it into the running stage. Nothing reboots, and the JSON on the right is the entire thing being drawn.",
+      composition,
+      filename: "basic.rendr.json",
+      fields: [
+        { id: "easing", label: "Easing", type: "select", options: Object.keys(easings), path: ["timeline", 1, "style", "&", "left", "keyframes", 0, "easing"] },
+        { id: "to", label: "Destination", type: "range", min: 160, max: 1036, step: 4, unit: "px", path: ["timeline", 1, "style", "&", "left", "keyframes", 1, "value"] },
+        { id: "accent", label: "Accent", type: "color", path: ["variables", "accent"] },
+        { id: "fps", label: "Frame rate", type: "select", options: ["24", "30", "60"], number: true, path: ["settings", "fps"] },
+      ],
+      note: "The easing list comes from the engine's own interpolator, so the dropdown only offers curves that exist. <code>easeOutBack</code> and the elastic family overshoot on purpose. Shortcuts: <kbd>Space</kbd> play, <kbd>←</kbd> <kbd>→</kbd> step.",
+    });
+  </script>
+</body>
+</html>

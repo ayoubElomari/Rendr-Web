@@ -1,0 +1,36 @@
+rendr-web: source-available, all rights reserved
+
+Copyright (c) 2025-2026 Ayoub El Omari. All rights reserved.
+
+This repository is published so that its code can be read and evaluated. It is
+not open source.
+
+PERMITTED
+You may view and read the source code in this repository, for personal study
+and for evaluating the author's work (for example, as a prospective employer or
+collaborator). Using GitHub's own features to view the repository, and forking
+it within GitHub as GitHub's Terms of Service allow, is also permitted.
+
+NOT PERMITTED, without the author's prior written permission
+1. Copying, modifying, merging, publishing, distributing, sublicensing, or
+   selling this software or any part of it.
+2. Using this software or any part of it in any product, service, project, or
+   website, whether commercial or non-commercial.
+3. Creating derivative works from it.
+4. Using this software as the basis, reference, or template for a competing or
+   substantially similar product.
+
+THIRD-PARTY CODE
+The file media/mp4box.js is the GPAC project's MP4 demuxer, distributed under
+the BSD-3-Clause license. Its original license notice is reproduced in the header of
+that file and in media/MP4BOX-LICENSE.txt, and governs that file only. This license does not apply to it.
+
+NO WARRANTY
+This software is provided "as is", without warranty of any kind, express or
+implied, including but not limited to the warranties of merchantability,
+fitness for a particular purpose, and noninfringement. In no event shall the
+author be liable for any claim, damages, or other liability arising from, out
+of, or in connection with the software or its use.
+
+To request permission for any use not listed above, contact the author at
+ayoubelomari463@gmail.com.

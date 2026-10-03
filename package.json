@@ -1,0 +1,9 @@
+{
+  "name": "rendr-web",
+  "version": "1.0.0",
+  "description": "A rendering runtime for the browser: draws any frame of a JSON composition into a DOM element.",
+  "type": "module",
+  "main": "index.js",
+  "exports": { ".": "./index.js" },
+  "sideEffects": false
+}
